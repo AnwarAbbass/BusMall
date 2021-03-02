@@ -1,53 +1,65 @@
-*{box-sizing: border-box;}
-body{
-    width: 90%;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 90%;
+  margin: auto;
+  background-color: antiquewhite;
+}
+
+header{
+    background-color: burlywood;
+    border: coral solid 1px;
     margin: auto;
-    background-color: antiquewhite;
 }
-#logo{
-    width: 100px;
-    height: 100px;
-    float: left;
+
+#logo {
+  width: 100px;
+  height: 100px;
+  float: left;
+  border: none;
+  padding-top:10px ;
 }
+
 img {
-    width: 250px;
-    height: 350px;
-    padding-left:10px ;
+  width: 250px;
+  height: 350px;
+  padding-left: 10px;
+  border: black solid 1px;
 }
 h1 {
-    color: rgb(15, 88, 64);
+  color: rgb(15, 88, 64);
 }
-a{
-    padding: 50px;
-    line-height: 100px;
+a {
+  padding: 50px;
+  line-height: 100px;
 }
-nav{
-    text-align: right;
-    margin: 30px;
+nav {
+  text-align: right;
+  margin: 30px;
 }
-
 
 p {
-    font-size: larger;
-    font-weight: bold;
-    color: rgb(15, 88, 64);
-    margin-bottom: 30px;
-    padding-left: 10px;
+  font-size: larger;
+  font-weight: bold;
+  color: rgb(15, 88, 64);
+  margin-bottom: 30px;
+  padding-left: 10px;
 }
-ul{
-    columns: 2;
+ul {
+  columns: 2;
 }
-li{
-    list-style:square outside;
-    line-height: 1.85pc;
+li {
+  list-style: square outside;
 }
 button {
-    font-size: larger;
-    background-color:rgb(15, 88, 64) ;
-    color: azure;
-    margin: 30px 0 0 10px;
+  font-size: larger;
+  background-color: rgb(15, 88, 64);
+  color: azure;
+  margin: 30px 0 0 10px;
 }
-button:hover{
-    background-color: azure;
-    color:rgb(15, 88, 64) ;
+button:hover {
+  background-color: azure;
+  color: rgba(252, 213, 40, 0.384);
 }

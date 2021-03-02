@@ -77,7 +77,7 @@ function render() {
 
 
 
-    } while (previous.includes(leftimgIndex) || previous.includes(centerimgIndex) || previous.includes(rightimgIndex));
+    } while (previous[0] === leftimgIndex || previous[1] === centerimgIndex || previous[3] === rightimgIndex);
     console.log(leftimgIndex, centerimgIndex, rightimgIndex);
 
     leftImage.src = busMall.all[leftimgIndex].path;
@@ -105,7 +105,7 @@ function handelClick(event) {
                 busMall.all[leftimgIndex].click++;
             }
 
-            if (clickedElement.id == 'centerImage') {
+            if (clickedElement.id == 'centertImage') {
                 busMall.all[centerimgIndex].click++;
             }
 

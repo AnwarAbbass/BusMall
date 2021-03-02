@@ -2,28 +2,50 @@
 body{
     width: 90%;
     margin: auto;
+    background-color: antiquewhite;
 }
 #logo{
     width: 100px;
     height: 100px;
+    float: left;
 }
 img {
     width: 250px;
     height: 350px;
+    padding-left:10px ;
 }
 h1 {
     color: rgb(15, 88, 64);
 }
+a{
+    padding: 50px;
+    line-height: 100px;
+}
+nav{
+    text-align: right;
+    margin: 30px;
+}
+
 
 p {
     font-size: larger;
     font-weight: bold;
     color: rgb(15, 88, 64);
+    margin-bottom: 30px;
+    padding-left: 10px;
+}
+ul{
+    columns: 2;
+}
+li{
+    list-style:square outside;
+    line-height: 1.85pc;
 }
 button {
     font-size: larger;
     background-color:rgb(15, 88, 64) ;
     color: azure;
+    margin: 30px 0 0 10px;
 }
 button:hover{
     background-color: azure;

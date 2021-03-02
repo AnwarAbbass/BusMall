@@ -17,6 +17,7 @@ let rightimgIndex = 0;
 let centerimgIndex = 0;
 const clickCounter = 24;
 let previous = [, ,];
+let shownArray = [];
 
 let imgArray = [
     'bag.jpg',
@@ -46,7 +47,7 @@ function extractImageName(name) {
 
 function busMall(name) {
     this.name = extractImageName(name);
-    this.path = `img/${name}`;
+    this.path = `./img/${name}`;
     this.shown = 0;
     this.click = 0;
     busMall.all.push(this);
@@ -60,6 +61,8 @@ for (let i = 0; i < imgArray.length; i++) {
 
 
 function render() {
+    busMall.innerHTML = '';
+    let include;
 
     do {
         leftimgIndex = randomNumber(0, busMall.all.length - 1);
@@ -74,11 +77,9 @@ function render() {
             rightimgIndex = randomNumber(0, busMall.all.length - 1);
         } while (leftimgIndex === rightimgIndex || centerimgIndex === rightimgIndex);
 
+        include = includeElement();
 
-
-
-    } while (previous[0] === leftimgIndex || previous[1] === centerimgIndex || previous[3] === rightimgIndex);
-    console.log(leftimgIndex, centerimgIndex, rightimgIndex);
+    } while (include);
 
     leftImage.src = busMall.all[leftimgIndex].path;
     centertImage.src = busMall.all[centerimgIndex].path;
@@ -93,6 +94,17 @@ function render() {
     previous[2] = rightimgIndex;
 
 
+}
+
+function includeElement() {
+    let include = false;
+    for (let index = 0; index < previous.length; index++) {
+        if (previous[index] === leftimgIndex || previous[index] === centerimgIndex || previous[index] === rightimgIndex) {
+            include = true;
+            break;
+        }
+    }
+    return include;
 }
 
 
@@ -117,13 +129,14 @@ function handelClick(event) {
         }
     }
     else {
+        localStorage.setItem('busMall', JSON.stringify(busMall.all));
         renderChart();
     }
 }
 
 imageSection.addEventListener('click', handelClick);
 button.addEventListener('click', viewResults);
-render();
+
 
 function viewResults(event) {
     let ulElement = document.createElement('ul');
@@ -134,6 +147,11 @@ function viewResults(event) {
         ulElement.appendChild(liElement);
         liElement.textContent = `${busMall.all[i].name} had ${busMall.all[i].click} votes, and was seen ${busMall.all[i].shown} times.`;
     }
+    button.removeEventListener('click', handelClick);
+    button.textContent = 'Reset';
+    button.onclick = function (event) {
+        location.reload();
+    };
 }
 
 
@@ -184,3 +202,27 @@ function renderChart() {
         }
     });
 }
+
+// function saveData() {
+
+//     if (result) {
+//         for (let index = 0; index < busMall.all.length; index++) {
+//             busMall.all[index].click += parseInt(result[index].click);
+//             console.log(busMall.all[index].click, result[index].click)
+//             busMall.all[index].shown += result[index].shown;
+
+//         }
+//         render();
+//     }
+// }
+
+
+function getData() {
+    const data = localStorage.getItem('busMall');
+    if (data) {
+        const objData = JSON.parse(data);
+        busMall.all = objData;
+        render();
+    }
+}
+getData();
